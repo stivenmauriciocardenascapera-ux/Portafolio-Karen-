@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio Académico</title>
+    <style>
+        /* Variables y Reset */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #27ae60;
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        /* Header y Navegación */
+        header {
+            background: var(--primary-color);
+            color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--light-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Secciones */
+        section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            text-align: center;
+            padding: 8rem 5% 5rem;
+            margin-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 2rem auto;
+            border: 5px solid white;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Botones */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            margin: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        /* Sección Información */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .info-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Sección Documentos */
+        .documents {
+            background: var(--light-color);
+        }
+
+        .doc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .doc-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .doc-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .doc-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .doc-actions {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .info-grid,
+            .doc-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .doc-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                margin: 0.2rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header y Navegación -->
+    <header>
+        <nav>
+            <div class="logo">MiPortafolio</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#informacion">Información</a></li>
+                <li><a href="#documentos">Documentos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Bienvenido a Mi Portafolio Académico</h1>
+            <p>Estudiante dedicado mostrando mi trayectoria y trabajos académicos</p>
+            
+            <div class="profile-image">
+                <img src="imagenes/imagen.jpg" alt="Descripción de la imagen" />
+            </div>
+            
+            <div class="hero-buttons">
+                <a href="#documentos" class="btn">Ver Documentos</a>
+                <a href="#informacion" class="btn btn-outline">Sobre Mí</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Información -->
+    <section id="informacion" class="information">
+        <h2 style="text-align: center; margin-bottom: 3rem; color: var(--primary-color); font-size: 2.5rem;">
+            Información Académica
+        </h2>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>📚 Sobre Mí</h3>
+                <p><strong>Nombre:</strong> STEVEN MAURICIO CARDENAS CAPERA</p>
+                <p><strong>Universidad:</strong> ITFIP</p>
+                <p><strong>Carrera:</strong> TECNOLOGIA EN GESTION INFORMATICA</p>
+                <p><strong>Semestre:</strong> SEMESTRE 5A</p>
+                <p>Estudiante comprometido con el aprendizaje continuo y desarrollo profesional.</p>
+            </div>
+
+            <div class="info-card">
+                <h3> Asignatura</h3>
+                <p><strong>Materia:</strong> SOCIOLOGIA</p>
+                <p><strong>Profesor:</strong> ALVARO DIAZ</p>
+                <p><strong>Horario:</strong> JUEVES</p>
+                <p>Esta asignatura se enfoca en organizar los trabajos o talleres en forma de portafolio.</p>
+            </div>
+
+            <div class="info-card">
+                <h3> Habilidades</h3>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>✔️ Investigación académica</li>
+                    <li>✔️ Análisis crítico</li>
+                    <li>✔️ Trabajo en equipo</li>
+                    <li>✔️ Comunicación efectiva</li>
+                    <li>✔️ Gestión de proyectos</li>
+                    <li>✔️ Uso de herramientas digitales</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Documentos -->
+<section id="documentos" class="documents">
+    <h2 style="text-align: center; margin-bottom: 3rem; color: var(--primary-color); font-size: 2.5rem;">
+        Mis Documentos Académicos
+    </h2>
+    
+    <div class="doc-grid">
+        <!-- Documento 1 -->
+        <div class="doc-card">
+            <div class="doc-icon">📝</div>
+            <h3>
+                <a href="https://docs.google.com/document/d/1_Jmkuf9IrFwvxBdVZogQbixKOqhydnZe/edit" target="_blank" rel="noopener noreferrer">
+                    HAMBRE.docx
+                </a>
+            </h3>
+            <p>Ejercicio de lectura</p>
+            <p><small>DOCX - Personalizado</small></p>
+            <div class="doc-actions">
+                <button class="btn btn-success" onclick="document.getElementById('fileInput1').click()">Subir</button>
+                <button class="btn" onclick="descargarDocumento('HAMBRE.docx')">Descargar</button>
+                <input type="file" id="fileInput1" style="display: none;" onchange="subirDocumento(this.files, 'HAMBRE.docx')">
+            </div>
+        </div>
+
+        <!-- Documento 2 -->
+        <div class="doc-card">
+            <div class="doc-icon">📝</div>
+            <h3>
+                <a href="https://docs.google.com/document/d/1e4e2gtG2O6X3Un_eZHxjsHDqGwlWKQlj/edit" target="_blank" rel="noopener noreferrer">
+                    HISTORIA ORDINARIA.docx
+                </a>
+            </h3>
+            <p>Ejercicio de lectura</p>
+            <p><small>DOCX - Personalizado</small></p>
+            <div class="doc-actions">
+                <button class="btn btn-success" onclick="document.getElementById('fileInput2').click()">Subir</button>
+                <button class="btn" onclick="descargarDocumento('HISTORIA ORDINARIA.docx')">Descargar</button>
+                <input type="file" id="fileInput2" style="display: none;" onchange="subirDocumento(this.files, 'HISTORIA ORDINARIA.docx')">
+            </div>
+        </div>
+
+        <!-- Documento 3 -->
+        <div class="doc-card">
+            <div class="doc-icon">📝</div>
+            <h3>
+                <a href="https://docs.google.com/document/d/17cH5DTDyKWnrovsO-ITPJWrcMcq826GE/edit" target="_blank" rel="noopener noreferrer">
+                    LA LECTURA COMO PROCESO DE INTERPRETACIÓN Y DESCIFRAMIENTO.docx
+                </a>
+            </h3>
+            <p>Ejercicio de lectura</p>
+            <p><small>DOCX - Personalizado</small></p>
+            <div class="doc-actions">
+                <button class="btn btn-success" onclick="document.getElementById('fileInput3').click()">Subir</button>
+                <button class="btn" onclick="descargarDocumento('LA LECTURA COMO PROCESO DE INTERPRETACIÓN Y DESCIFRAMIENTO.docx')">Descargar</button>
+                <input type="file" id="fileInput3" style="display: none;" onchange="subirDocumento(this.files, 'LA LECTURA COMO PROCESO DE INTERPRETACIÓN Y DESCIFRAMIENTO.docx')">
+            </div>
+        </div>
+
+        <!-- Documento 4 -->
+        <div class="doc-card">
+            <div class="doc-icon">📝</div>
+            <h3>
+                <a href="https://docs.google.com/document/d/1qbg23D8GEQXf2kilI89G7yM-4Zu81tF1/edit" target="_blank" rel="noopener noreferrer">
+                    LOS NADIES (Eduardo Galeano).docx
+                </a>
+            </h3>
+            <p>Archivo académico personalizado</p>
+            <p><small>DOCX - Personalizado</small></p>
+            <div class="doc-actions">
+                <button class="btn btn-success" onclick="document.getElementById('fileInput4').click()">Subir</button>
+                <button class="btn" onclick="descargarDocumento('LOS NADIES (Eduardo Galeano) .docx')">Descargar</button>
+                <input type="file" id="fileInput4" style="display: none;" onchange="subirDocumento(this.files, 'LOS NADIES (Eduardo Galeano) .docx')">
+            </div>
+        </div>
+
+        <!-- Documento 5 -->
+        <div class="doc-card">
+            <div class="doc-icon">📝</div>
+            <h3>
+                <a href="https://docs.google.com/document/d/1c-FObwUQXrwDGr3ZKIiukpil2jbzVekd/edit" target="_blank" rel="noopener noreferrer">
+                    PORTAFOLIO DE EVIDENCIAS DE APRENDIZAJE.docx
+                </a>
+            </h3>
+            <p>Archivo académico personalizado</p>
+            <p><small>DOCX - Personalizado</small></p>
+            <div class="doc-actions">
+                <button class="btn btn-success" onclick="document.getElementById('fileInput5').click()">Subir</button>
+                <button class="btn" onclick="descargarDocumento('PORTAFOLIO DE EVIDENCIAS DE APRENDIZAJE.docx')">Descargar</button>
+                <input type="file" id="fileInput5" style="display: none;" onchange="subirDocumento(this.files, 'PORTAFOLIO DE EVIDENCIAS DE APRENDIZAJE.docx')">
+            </div>
+        </div>
+
+        <!-- Documento 6 -->
+        <div class="doc-card">
+            <div class="doc-icon">📝</div>
+            <h3>
+                <a href="https://docs.google.com/document/d/1kOE60knFkGeFF-cObxkY2AoB4LucZ0Fd/edit" target="_blank" rel="noopener noreferrer">
+                    EL AMOR EN LOS TIEMPOS DE LA TECNOLOGIA.docx
+                </a>
+            </h3>
+            <p>Archivo académico personalizado</p>
+            <p><small>PPTX - Personalizado</small></p>
+            <div class="doc-actions">
+                <button class="btn btn-success" onclick="document.getElementById('fileInput6').click()">Subir</button>
+                <button class="btn" onclick="descargarDocumento('EL AMOR EN LOS TIEMPOS DE LA TECNOLOGIA.docx')">Descargar</button>
+                <input type="file" id="fileInput6" style="display: none;" onchange="subirDocumento(this.files, 'EL AMOR EN LOS TIEMPOS DE LA TECNOLOGIA.docx.')">
+            </div>
+        </div>
+
+        <!-- Documento 7 -->
+        <div class="doc-card">
+            <div class="doc-icon">📝</div>
+            <h3>
+                <a href="https://docs.google.com/document/d/1MoVxwPDPuKLTy74ydDygL83AxRvrtAWT/edit" target="_blank" rel="noopener noreferrer">
+                    QUE ES LA SOCIOLOGIA.docx
+                </a>
+            </h3>
+            <p>Archivo académico personalizado</p>
+            <p><small>DOCX - Personalizado</small></p>
+            <div class="doc-actions">
+                <button class="btn btn-success" onclick="document.getElementById('fileInput7').click()">Subir</button>
+                <button class="btn" onclick="descargarDocumento('QUE ES LA SOCIOLOGIA.docx')">Descargar</button>
+                <input type="file" id="fileInput7" style="display: none;" onchange="subirDocumento(this.files, 'QUE ES LA SOCIOLOGIA.docx')">
+            </div>
+        </div>
+
+        <!-- Documento 8 -->
+        <div class="doc-card">
+            <div class="doc-icon">📝</div>
+            <h3>
+                <a href="https://docs.google.com/document/d/1N8FoTaeiIESkk8nVDGxEnSi8WzCKKAOd/edit" target="_blank" rel="noopener noreferrer">
+                   SOCIOLOGÍA DEL FUTBOL.docx
+                </a>
+            </h3>
+            <p>Archivo académico personalizado</p>
+            <p><small>PDF - Personalizado</small></p>
+            <div class="doc-actions">
+                <button class="btn btn-success" onclick="document.getElementById('fileInput8').click()">Subir</button>
+                <button class="btn" onclick="descargarDocumento('SOCIOLOGÍA DEL FUTBOL.docx')">Descargar</button>
+                <input type="file" id="fileInput8" style="display: none;" onchange="subirDocumento(this.files, 'SOCIOLOGÍA DEL FUTBOL.docx')">
+            </div>
+        </div>
+         <!-- Documento 9 -->
+        <div class="doc-card">
+            <div class="doc-icon">📝</div>
+            <h3>
+                <a href="https://docs.google.com/document/d/1c-FObwUQXrwDGr3ZKIiukpil2jbzVekd/edit" target="_blank" rel="noopener noreferrer">
+                    AGREGAR.docx
+                </a>
+            </h3>
+            <p>Archivo académico personalizado</p>
+            <p><small>DOCX - Personalizado</small></p>
+            <div class="doc-actions">
+                <button class="btn btn-success" onclick="document.getElementById('fileInput5').click()">Subir</button>
+                <button class="btn" onclick="descargarDocumento('PORTAFOLIO DE EVIDENCIAS DE APRENDIZAJE.docx')">Descargar</button>
+                <input type="file" id="fileInput5" style="display: none;" onchange="subirDocumento(this.files, 'PORTAFOLIO DE EVIDENCIAS DE APRENDIZAJE.docx')">
+            </div>
+        </div>
+         <!-- Documento 10 -->
+        <div class="doc-card">
+            <div class="doc-icon">📝</div>
+            <h3>
+                <a href="https://docs.google.com/document/d/1c-FObwUQXrwDGr3ZKIiukpil2jbzVekd/edit" target="_blank" rel="noopener noreferrer">
+                    AGREGAR.docx
+                </a>
+            </h3>
+            <p>Archivo académico personalizado</p>
+            <p><small>DOCX - Personalizado</small></p>
+            <div class="doc-actions">
+                <button class="btn btn-success" onclick="document.getElementById('fileInput5').click()">Subir</button>
+                <button class="btn" onclick="descargarDocumento('PORTAFOLIO DE EVIDENCIAS DE APRENDIZAJE.docx')">Descargar</button>
+                <input type="file" id="fileInput5" style="display: none;" onchange="subirDocumento(this.files, 'PORTAFOLIO DE EVIDENCIAS DE APRENDIZAJE.docx')">
+            </div>
+        </div>
+         <!-- Documento 11 -->
+        <div class="doc-card">
+            <div class="doc-icon">📝</div>
+            <h3>
+                <a href="https://docs.google.com/document/d/1c-FObwUQXrwDGr3ZKIiukpil2jbzVekd/edit" target="_blank" rel="noopener noreferrer">
+                    AGREGAR.docx
+                </a>
+            </h3>
+            <p>Archivo académico personalizado</p>
+            <p><small>DOCX - Personalizado</small></p>
+            <div class="doc-actions">
+                <button class="btn btn-success" onclick="document.getElementById('fileInput5').click()">Subir</button>
+                <button class="btn" onclick="descargarDocumento('PORTAFOLIO DE EVIDENCIAS DE APRENDIZAJE.docx')">Descargar</button>
+                <input type="file" id="fileInput5" style="display: none;" onchange="subirDocumento(this.files, 'PORTAFOLIO DE EVIDENCIAS DE APRENDIZAJE.docx')">
+            </div>
+        </div>
+         <!-- Documento 12 -->
+        <div class="doc-card">
+            <div class="doc-icon">📝</div>
+            <h3>
+                <a href="https://docs.google.com/document/d/1c-FObwUQXrwDGr3ZKIiukpil2jbzVekd/edit" target="_blank" rel="noopener noreferrer">
+                    AGREGAR.docx
+                </a>
+            </h3>
+            <p>Archivo académico personalizado</p>
+            <p><small>DOCX - Personalizado</small></p>
+            <div class="doc-actions">
+                <button class="btn btn-success" onclick="document.getElementById('fileInput5').click()">Subir</button>
+                <button class="btn" onclick="descargarDocumento('PORTAFOLIO DE EVIDENCIAS DE APRENDIZAJE.docx')">Descargar</button>
+                <input type="file" id="fileInput5" style="display: none;" onchange="subirDocumento(this.files, 'PORTAFOLIO DE EVIDENCIAS DE APRENDIZAJE.docx')">
+            </div>
+        </div>
+         <!-- Documento 13 -->
+        <div class="doc-card">
+            <div class="doc-icon">📝</div>
+            <h3>
+                <a href="https://docs.google.com/document/d/1c-FObwUQXrwDGr3ZKIiukpil2jbzVekd/edit" target="_blank" rel="noopener noreferrer">
+                    AGREGAR.docx
+                </a>
+            </h3>
+            <p>Archivo académico personalizado</p>
+            <p><small>DOCX - Personalizado</small></p>
+            <div class="doc-actions">
+                <button class="btn btn-success" onclick="document.getElementById('fileInput5').click()">Subir</button>
+                <button class="btn" onclick="descargarDocumento('PORTAFOLIO DE EVIDENCIAS DE APRENDIZAJE.docx')">Descargar</button>
+                <input type="file" id="fileInput5" style="display: none;" onchange="subirDocumento(this.files, 'PORTAFOLIO DE EVIDENCIAS DE APRENDIZAJE.docx')">
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+  // Función para descargar archivo (redirige a la ruta del archivo para descargar)
+  function descargarDocumento(nombreArchivo) {
+    const ruta = `Documentos/${encodeURIComponent(nombreArchivo)}`;
+    const link = document.createElement('a');
+    link.href = ruta;
+    link.download = nombreArchivo;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  // Función subir documento (deja como está, la puedes implementar luego)
+  function subirDocumento(files, nombreArchivo) {
+    alert(`Función subir para ${nombreArchivo} no implementada aún.`);
+  }
+</script>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <h3>Contacto</h3>
+        <p>Email: scardenas14@itfip.edu.co</p>
+        <p>Teléfono: 3112171542</p>
+        <p>© 2025 Mi Portafoli 
