@@ -3,352 +3,567 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portafolio Académico</title>
+    <meta name="description" content="Portafolio académico de Karen Tatiana García Rojas">
+    <title>Portafolio | Karen Tatiana García Rojas</title>
     <style>
-        /* Variables y Reset */
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --light-color: #ecf0f1;
-            --dark-color: #2c3e50;
-            --success-color: #27ae60;
-            --text-color: #333;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
+        :root{
+            --ink:#263632;
+            --muted:#687872;
+            --cream:#fffaf4;
+            --paper:#fffdf9;
+            --rose:#d97c93;
+            --rose-dark:#b95973;
+            --blush:#f6dce3;
+            --sage:#a8c8b7;
+            --sage-dark:#6d9d87;
+            --gold:#d8ac63;
+            --line:#e8ddd5;
+            --shadow:0 18px 45px rgba(61,52,47,.10);
+            --soft-shadow:0 8px 25px rgba(61,52,47,.08);
+            --radius:24px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{
+            font-family: "Segoe UI", Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            color:var(--ink);
+            background:
+                radial-gradient(circle at 5% 10%, rgba(217,124,147,.12), transparent 24%),
+                radial-gradient(circle at 92% 16%, rgba(168,200,183,.18), transparent 25%),
+                linear-gradient(180deg,#fffaf6 0%,#f9f5ef 100%);
+            line-height:1.65;
+            overflow-x:hidden;
+        }
+        a{color:inherit}
+        .container{width:min(1160px,92%);margin:auto}
+
+        /* Navegación */
+        header{
+            position:fixed;
+            inset:0 0 auto 0;
+            z-index:1000;
+            background:rgba(255,250,244,.88);
+            backdrop-filter:blur(16px);
+            border-bottom:1px solid rgba(217,124,147,.14);
+        }
+        nav{
+            min-height:76px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:20px;
+        }
+        .brand{
+            display:flex;
+            align-items:center;
+            gap:11px;
+            text-decoration:none;
+            font-weight:800;
+            letter-spacing:.3px;
+        }
+        .brand-mark{
+            width:43px;height:43px;border-radius:15px;
+            display:grid;place-items:center;
+            background:linear-gradient(145deg,var(--rose),var(--sage));
+            color:#fff;
+            box-shadow:0 8px 20px rgba(217,124,147,.25);
+            font-size:1.15rem;
+        }
+        .brand span:last-child{display:flex;flex-direction:column;line-height:1.05}
+        .brand small{font-size:.68rem;color:var(--muted);font-weight:600;margin-top:3px}
+        .nav-links{display:flex;gap:7px;list-style:none}
+        .nav-links a{
+            text-decoration:none;
+            padding:10px 14px;
+            border-radius:14px;
+            color:var(--ink);
+            font-weight:650;
+            transition:.25s ease;
+        }
+        .nav-links a:hover{background:var(--blush);color:var(--rose-dark);transform:translateY(-2px)}
+
+        /* Decoración de aves */
+        .bird{
+            position:absolute;
+            pointer-events:none;
+            opacity:.9;
+            filter:drop-shadow(0 10px 15px rgba(60,50,45,.08));
+        }
+        .bird svg{width:100%;height:100%}
+        .bird-1{width:95px;right:7%;top:120px;transform:rotate(-7deg)}
+        .bird-2{width:125px;left:1%;top:70%;transform:rotate(5deg)}
+        .bird-3{width:74px;right:10%;bottom:50px;transform:rotate(9deg)}
+        .twig{
+            position:absolute;
+            right:0;top:0;width:220px;height:160px;
+            opacity:.42;pointer-events:none
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
+        /* Hero */
+        .hero{
+            min-height:850px;
+            padding:145px 0 80px;
+            position:relative;
+            display:grid;
+            place-items:center;
+            overflow:hidden;
+        }
+        .hero::before{
+            content:"";
+            position:absolute;
+            width:680px;height:680px;border-radius:50%;
+            background:radial-gradient(circle,rgba(246,220,227,.75),rgba(246,220,227,0));
+            top:-190px;left:-220px;
+        }
+        .hero::after{
+            content:"";
+            position:absolute;
+            width:600px;height:600px;border-radius:50%;
+            background:radial-gradient(circle,rgba(168,200,183,.38),rgba(168,200,183,0));
+            right:-190px;bottom:-240px;
+        }
+        .hero-grid{
+            position:relative;z-index:2;
+            width:min(1160px,92%);
+            display:grid;grid-template-columns:1.12fr .88fr;
+            gap:55px;align-items:center;
+        }
+        .eyebrow{
+            display:inline-flex;align-items:center;gap:8px;
+            color:var(--rose-dark);background:#fff0f3;
+            border:1px solid #f0c6d0;
+            padding:8px 13px;border-radius:999px;
+            font-size:.8rem;font-weight:800;letter-spacing:.8px;text-transform:uppercase;
+        }
+        .hero h1{
+            font-family:Georgia,"Times New Roman",serif;
+            font-size:clamp(3.1rem,7vw,5.6rem);
+            line-height:.98;
+            margin:22px 0 20px;
+            letter-spacing:-2px;
+        }
+        .hero h1 span{color:var(--rose-dark)}
+        .hero-lead{font-size:1.18rem;color:var(--muted);max-width:650px}
+        .hero-tags{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0}
+        .tag{
+            background:rgba(255,255,255,.76);
+            border:1px solid var(--line);
+            padding:9px 13px;border-radius:999px;
+            font-weight:700;font-size:.85rem;
+        }
+        .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+        .btn{
+            display:inline-flex;align-items:center;justify-content:center;gap:8px;
+            border:none;text-decoration:none;cursor:pointer;
+            padding:12px 17px;border-radius:14px;
+            font-weight:800;transition:.25s ease;
+        }
+        .btn-primary{
+            color:white;background:linear-gradient(135deg,var(--rose),var(--rose-dark));
+            box-shadow:0 12px 24px rgba(185,89,115,.22);
+        }
+        .btn-soft{background:#fff;border:1px solid var(--line);color:var(--ink)}
+        .btn-success{
+            background:linear-gradient(135deg,var(--sage),var(--sage-dark));
+            color:#fff;
+        }
+        .btn:hover{transform:translateY(-3px);box-shadow:0 14px 24px rgba(61,52,47,.13)}
+
+        .profile-shell{
+            position:relative;
+            width:min(430px,100%);
+            margin:auto;
+        }
+        .profile-card{
+            background:rgba(255,255,255,.75);
+            border:1px solid rgba(255,255,255,.92);
+            border-radius:34px;padding:24px;
+            box-shadow:var(--shadow);
+            backdrop-filter:blur(12px);
+            transform:rotate(1deg);
+        }
+        .profile-frame{
+            aspect-ratio:4/5;border-radius:26px;overflow:hidden;
+            background:
+                linear-gradient(135deg,rgba(217,124,147,.22),rgba(168,200,183,.20)),
+                #f4ede6;
+            border:8px solid #fff;
+            display:grid;place-items:center;
+            position:relative;
+        }
+        .profile-frame img{width:100%;height:100%;object-fit:cover}
+        .profile-placeholder{
+            text-align:center;color:var(--muted);padding:25px
+        }
+        .profile-placeholder .camera{font-size:3.2rem;margin-bottom:9px}
+        .profile-info{
+            display:flex;justify-content:space-between;align-items:end;gap:12px;
+            padding:18px 4px 2px;
+        }
+        .profile-info strong{font-size:1.15rem}
+        .profile-info small{color:var(--muted)}
+        .seal{
+            width:72px;height:72px;border-radius:50%;
+            display:grid;place-items:center;text-align:center;
+            border:1px dashed var(--gold);color:#92703d;background:#fffaf0;
+            font-size:.67rem;font-weight:900;text-transform:uppercase;line-height:1.1;
+            transform:rotate(10deg)
         }
 
-        /* Header y Navegación */
-        header {
-            background: var(--primary-color);
-            color: white;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: var(--shadow);
+        /* Encabezados */
+        .section{padding:100px 0;position:relative}
+        .section-head{text-align:center;max-width:760px;margin:0 auto 50px}
+        .section-kicker{
+            color:var(--sage-dark);font-size:.76rem;text-transform:uppercase;
+            font-weight:900;letter-spacing:1.8px
+        }
+        .section h2{
+            font-family:Georgia,"Times New Roman",serif;
+            font-size:clamp(2.4rem,5vw,4rem);
+            margin:8px 0 12px;
+        }
+        .section-head p{color:var(--muted)}
+
+        /* Perfil */
+        .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+        .card{
+            background:rgba(255,255,255,.78);
+            border:1px solid var(--line);
+            border-radius:var(--radius);
+            padding:28px;
+            box-shadow:var(--soft-shadow);
+        }
+        .card h3{font-size:1.2rem;margin-bottom:16px}
+        .bio-card{background:linear-gradient(145deg,#fff 20%,#fff5f7 100%)}
+        .facts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+        .fact{
+            padding:15px;border-radius:16px;background:rgba(255,255,255,.8);
+            border:1px solid #efe5de
+        }
+        .fact span{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:800}
+        .fact strong{display:block;margin-top:3px}
+        .interest-list{display:grid;gap:11px;margin-top:10px}
+        .interest{
+            display:flex;align-items:center;gap:12px;
+            padding:13px 14px;border-radius:16px;
+            background:#fff;border:1px solid var(--line)
+        }
+        .interest-icon{
+            width:38px;height:38px;border-radius:12px;display:grid;place-items:center;
+            background:var(--blush);color:var(--rose-dark);font-size:1.15rem;flex:none
         }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
+        /* Sello civil */
+        .civil-strip{
+            margin-top:28px;
+            display:grid;grid-template-columns:repeat(3,1fr);gap:16px
+        }
+        .civil-item{
+            background:var(--ink);color:white;border-radius:20px;padding:20px;position:relative;overflow:hidden
+        }
+        .civil-item::after{
+            content:"";position:absolute;right:-14px;bottom:-30px;width:85px;height:85px;border:1px solid rgba(255,255,255,.18);transform:rotate(45deg)
+        }
+        .civil-item .num{font-size:1.9rem;font-weight:900;color:#f3d0d9}
+        .civil-item p{font-size:.86rem;color:#cfdbd6;margin-top:3px}
+
+        /* Documentos */
+        .documents-wrap{
+            background:
+                linear-gradient(rgba(255,255,255,.38),rgba(255,255,255,.38)),
+                repeating-linear-gradient(0deg,transparent 0 33px,rgba(109,157,135,.06) 34px),
+                #f6f5ef;
+            border-top:1px solid var(--line);
+            border-bottom:1px solid var(--line)
+        }
+        .doc-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:20px;
+        }
+        .doc-card{
+            position:relative;background:#fff;border:1px solid var(--line);
+            border-radius:22px;padding:22px;
+            box-shadow:var(--soft-shadow);transition:.25s ease;overflow:hidden
+        }
+        .doc-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+        .doc-card::before{
+            content:"";position:absolute;left:0;top:0;width:100%;height:5px;
+            background:linear-gradient(90deg,var(--rose),var(--sage),var(--gold))
+        }
+        .doc-icon{
+            width:50px;height:50px;border-radius:15px;
+            background:#fff4f6;border:1px solid #f0d4da;
+            color:var(--rose-dark);
+            display:grid;place-items:center;font-size:1.35rem;margin-bottom:14px
+        }
+        .doc-card h3{
+            font-size:1rem;line-height:1.35;margin-bottom:8px;
+            overflow-wrap:anywhere
+        }
+        .doc-card h3 a{text-decoration:none}
+        .doc-card h3 a:hover{color:var(--rose-dark)}
+        .doc-card p{color:var(--muted);font-size:.88rem}
+        .doc-actions{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap}
+        .doc-actions .btn{font-size:.78rem;padding:9px 12px}
+        .template-note{
+            margin:0 auto 28px;max-width:860px;
+            padding:14px 16px;border-radius:16px;
+            background:#fff8ef;border:1px solid #ecdcbf;color:#7a6440;
+            font-size:.9rem
         }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--light-color);
+        /* Contacto */
+        .contact-grid{
+            display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:stretch
         }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
+        .contact-card{
+            background:linear-gradient(135deg,#2e403a,#435a50);
+            color:#fff;border-radius:28px;padding:34px;box-shadow:var(--shadow);position:relative;overflow:hidden
         }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
+        .contact-card::before,.contact-card::after{
+            content:"";position:absolute;border:1px solid rgba(255,255,255,.12);border-radius:50%
         }
-
-        .nav-links a:hover {
-            background: var(--secondary-color);
-            transform: translateY(-2px);
+        .contact-card::before{width:250px;height:250px;right:-100px;top:-100px}
+        .contact-card::after{width:180px;height:180px;left:-100px;bottom:-80px}
+        .contact-card h3{font-family:Georgia,serif;font-size:2rem;margin-bottom:10px}
+        .contact-card p{color:#d9e5df}
+        .contact-list{display:grid;gap:10px;margin-top:22px}
+        .contact-list a{
+            text-decoration:none;color:#fff;padding:11px 12px;
+            border:1px solid rgba(255,255,255,.13);border-radius:13px;background:rgba(255,255,255,.05)
         }
-
-        /* Secciones */
-        section {
-            padding: 5rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
+        .contact-list a:hover{background:rgba(255,255,255,.1)}
+        .mini-quote{
+            display:grid;place-items:center;text-align:center;
+            min-height:100%;padding:30px;background:#fff;border:1px solid var(--line);
+            border-radius:28px;box-shadow:var(--soft-shadow)
         }
+        .mini-quote .bird-symbol{font-size:3rem}
+        .mini-quote p{font-family:Georgia,serif;font-size:1.55rem;line-height:1.35;margin:10px 0}
+        .mini-quote small{color:var(--muted)}
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            text-align: center;
-            padding: 8rem 5% 5rem;
-            margin-top: 60px;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin: 2rem auto;
-            border: 5px solid white;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Botones */
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background: var(--accent-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            margin: 0.3rem;
-            font-size: 0.9rem;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid white;
-            color: white;
-        }
-
-        .btn-outline:hover {
-            background: white;
-            color: var(--primary-color);
-        }
-
-        /* Sección Información */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .info-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .info-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        /* Sección Documentos */
-        .documents {
-            background: var(--light-color);
-        }
-
-        .doc-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .doc-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            text-align: center;
-        }
-
-        .doc-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .doc-icon {
-            font-size: 3rem;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-        }
-
-        .doc-actions {
-            margin-top: 1rem;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark-color);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-
-        /* Animaciones */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        footer{
+            padding:28px 0;text-align:center;color:var(--muted);font-size:.85rem
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .info-grid,
-            .doc-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .doc-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                margin: 0.2rem 0;
-            }
+        @media(max-width:900px){
+            .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+            .hero{min-height:auto;padding-top:120px}
+            .profile-shell{max-width:390px}
+            .nav-links{display:none}
         }
+        @media(max-width:600px){
+            .hero h1{letter-spacing:-1px}
+            .hero-actions .btn{width:100%}
+            .facts,.civil-strip{grid-template-columns:1fr}
+            .section{padding:76px 0}
+        }
+
+        @keyframes floatBird{
+            0%,100%{transform:translateY(0) rotate(-4deg)}
+            50%{transform:translateY(-10px) rotate(2deg)}
+        }
+        .bird-1{animation:floatBird 5s ease-in-out infinite}
+        .bird-2{animation:floatBird 6s ease-in-out infinite reverse}
     </style>
 </head>
 <body>
-    <!-- Header y Navegación -->
-    <header>
-        <nav>
-            <div class="logo">MiPortafolio</div>
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#informacion">Información</a></li>
-                <li><a href="#documentos">Documentos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
+<header>
+    <nav class="container">
+        <a class="brand" href="#inicio">
+            <div class="brand-mark">🕊</div>
+            <span>Karen Tatiana<small>Portafolio académico</small></span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#sobre-mi">Sobre mí</a></li>
+            <li><a href="#documentos">Evidencias</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
     <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1>Bienvenido a Mi Portafolio Académico</h1>
-            <p>Estudiante dedicado mostrando mi trayectoria y trabajos académicos</p>
-            
-            <div class="profile-image">
-                <img src="imagenes/imagen.jpg" alt="Descripción de la imagen" />
+        <div class="bird bird-1" aria-hidden="true">
+            <svg viewBox="0 0 150 90" fill="none">
+                <path d="M10 53C34 20 57 17 75 42C92 66 111 65 140 35" stroke="#B95973" stroke-width="5" stroke-linecap="round"/>
+                <path d="M25 58C43 43 54 35 66 42C78 49 89 61 112 58" stroke="#6D9D87" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+        </div>
+
+        <div class="bird bird-2" aria-hidden="true">
+            <svg viewBox="0 0 170 100" fill="none">
+                <path d="M7 56C31 25 52 27 66 46C79 63 94 69 111 61C127 54 142 41 162 17" stroke="#6D9D87" stroke-width="6" stroke-linecap="round"/>
+                <circle cx="104" cy="58" r="2.8" fill="#D8AC63"/>
+            </svg>
+        </div>
+
+        <div class="hero-grid">
+            <div>
+                <span class="eyebrow">✦ Ingeniería Civil · Quinto semestre</span>
+                <h1>PORTAFOLIO, <span>SOCIOLOGIA.</span></h1>
+                <p class="hero-lead">
+                    Soy <strong>Karen Tatiana García Rojas</strong>, estudiante de Ingeniería Civil.
+                    Este espacio reúne mi información académica, mis evidencias y el trabajo que voy construyendo durante mi formación dentro de la materia de Sociologia.
+                </p>
+                <div class="hero-tags">
+                    <span class="tag">20 años</span>
+                    <span class="tag">Ingeniería Civil</span>
+                    <span class="tag">5.º semestre</span>
+                    <span class="tag">Portafolio académico</span>
+                </div>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#documentos">Ver evidencias ↗</a>
+                    <a class="btn btn-soft" href="#sobre-mi">Conocerme</a>
+                </div>
             </div>
-            
-            <div class="hero-buttons">
-                <a href="#documentos" class="btn">Ver Documentos</a>
-                <a href="#informacion" class="btn btn-outline">Sobre Mí</a>
+
+            <div class="profile-shell">
+                <div class="profile-card">
+                    <div class="profile-frame">
+                        <img src="imagenes/imagen.jpg" alt="Fotografía de Karen Tatiana García Rojas"
+                             onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                        <div class="profile-placeholder" style="display:none">
+                            <div class="camera">📷</div>
+                            <strong>Aquí irá la foto de Karen</strong>
+                            <p>Reemplaza <code>imagenes/imagen.jpg</code> por su fotografía.</p>
+                        </div>
+                    </div>
+                    <div class="profile-info">
+                        <div>
+                            <strong>Karen Tatiana García Rojas</strong><br>
+                            <small>Estudiante de Ingeniería Civil</small>
+                        </div>
+                        <div class="seal">5.º<br>semestre</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="twig" aria-hidden="true">
+            <svg viewBox="0 0 220 160" fill="none">
+                <path d="M220 10C178 41 145 73 112 105C87 128 58 145 18 150" stroke="#6D9D87" stroke-width="2.6" stroke-linecap="round"/>
+                <path d="M158 55C179 53 192 41 202 26M129 83C115 60 107 48 89 39M91 117C104 108 112 96 119 82" stroke="#A8C8B7" stroke-width="3"/>
+                <ellipse cx="202" cy="25" rx="11" ry="5" transform="rotate(-32 202 25)" fill="#D97C93"/>
+                <ellipse cx="89" cy="39" rx="11" ry="5" transform="rotate(35 89 39)" fill="#D97C93"/>
+                <ellipse cx="118" cy="82" rx="10" ry="5" transform="rotate(-48 118 82)" fill="#D8AC63"/>
+            </svg>
+        </div>
+    </section>
+
+    <section id="sobre-mi" class="section">
+        <div class="container">
+            <div class="section-head">
+                <div class="section-kicker">Perfil académico</div>
+                <h2>Sobre Karen</h2>
+                <p>Una presentación sencilla, cálida y enfocada en su formación como futura ingeniera civil.</p>
+            </div>
+
+            <div class="about-grid">
+                <article class="card bio-card">
+                    <h3>🌿 Mi perfil</h3>
+                    <p>
+                        Mi nombre es <strong>Karen Tatiana García Rojas</strong>. Tengo 20 años y actualmente curso
+                        <strong>quinto semestre de Ingeniería Civil</strong>. Mi portafolio reúne trabajos, actividades y evidencias
+                        de aprendizaje que hacen parte de mi proceso universitario.
+                    </p>
+                    <div class="facts" style="margin-top:20px">
+                        <div class="fact"><span>Nombre</span><strong>Karen Tatiana García Rojas</strong></div>
+                        <div class="fact"><span>Edad</span><strong>20 años</strong></div>
+                        <div class="fact"><span>Carrera</span><strong>Ingeniería Civil</strong></div>
+                        <div class="fact"><span>Semestre</span><strong>Quinto</strong></div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <h3>🪶 Mi forma de aprender</h3>
+                    <div class="interest-list">
+                        <div class="interest"><div class="interest-icon">📐</div><div><strong>Diseño y precisión</strong><br><small>Atención al detalle y representación técnica.</small></div></div>
+                        <div class="interest"><div class="interest-icon">🏗️</div><div><strong>Ingeniería Civil</strong><br><small>Interés por los procesos que transforman ideas en obras.</small></div></div>
+                        <div class="interest"><div class="interest-icon">📚</div><div><strong>Aprendizaje continuo</strong><br><small>Organización de actividades y evidencias académicas.</small></div></div>
+                        <div class="interest"><div class="interest-icon">🕊️</div><div><strong>Creatividad</strong><br><small>Un portafolio que también refleja personalidad y estilo.</small></div></div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="civil-strip">
+                <div class="civil-item"><div class="num">01</div><strong>Imaginar</strong><p>Convertir una idea en una propuesta.</p></div>
+                <div class="civil-item"><div class="num">02</div><strong>Planificar</strong><p>Ordenar recursos, tiempos y evidencias.</p></div>
+                <div class="civil-item"><div class="num">03</div><strong>Construir</strong><p>Aprender haciendo y mejorar cada etapa.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- Sección Información -->
-    <section id="informacion" class="information">
-        <h2 style="text-align: center; margin-bottom: 3rem; color: var(--primary-color); font-size: 2.5rem;">
-            Información Académica
-        </h2>
-        
-        <div class="info-grid">
-            <div class="info-card">
-                <h3>📚 Sobre Mí</h3>
-                <p><strong>Nombre:</strong> STEVEN MAURICIO CARDENAS CAPERA</p>
-                <p><strong>Universidad:</strong> ITFIP</p>
-                <p><strong>Carrera:</strong> TECNOLOGIA EN GESTION INFORMATICA</p>
-                <p><strong>Semestre:</strong> SEMESTRE 5A</p>
-                <p>Estudiante comprometido con el aprendizaje continuo y desarrollo profesional.</p>
+    <section id="documentos" class="section documents-wrap">
+        <div class="container">
+            <div class="section-head">
+                <div class="section-kicker">Evidencias</div>
+                <h2>Trabajos y documentos</h2>
             </div>
 
-            <div class="info-card">
-                <h3> Asignatura</h3>
-                <p><strong>Materia:</strong> SOCIOLOGIA</p>
-                <p><strong>Profesor:</strong> ALVARO DIAZ</p>
-                <p><strong>Horario:</strong> JUEVES</p>
-                <p>Esta asignatura se enfoca en organizar los trabajos o talleres en forma de portafolio.</p>
+            
+
+            <!-- Tarjetas nuevas y limpias para Karen. Duplica esta tarjeta para agregar más evidencias. -->
+            <div class="doc-grid">
+                <div class="doc-card">
+                    <div class="doc-icon">📘</div>
+                    <h3>TRABAJO 01</h3>
+                    <h3>
+                    <a href="https://docs.google.com/document/d/1ngiIZpH6tjlBZRc6I0FGWmO82wkXorMi/edit" target="_blank" rel="noopener noreferrer">
+                    Ver.docx
+                </a> </h3>
+                    <p><small>Quinto semestre</small></p>
+                    <div class="doc-actions">
+                        <button class="btn btn-success" onclick="document.getElementById('fileInputKaren1').click()">Subir</button>
+                        <button class="btn btn-soft" onclick="descargarDocumento('Trabajo 1.docx')">Descargar</button>
+                        <input type="file" id="fileInputKaren1" style="display:none" onchange="subirDocumento(this.files, 'Trabajo 1.docx')">
+                    </div>
+                </div>
+
+                <div class="doc-card">
+                    <div class="doc-icon">📐</div>
+                    <h3>TRABAJO 02</h3>
+                    <h3>
+                    <a href="https://docs.google.com/document/d/1Pc4ZETsOPTo0EzYPAqHaI_iI36SLtQvE/edit" target="_blank" rel="noopener noreferrer">
+                    Ver.docx
+                </a> </h3>
+                    <p>Espacio para la segunda evidencia de Karen.</p>
+                    <p><small>Quinto semestre</small></p>
+                    <div class="doc-actions">
+                        <button class="btn btn-success" onclick="document.getElementById('fileInputKaren2').click()">Subir</button>
+                        <button class="btn btn-soft" onclick="descargarDocumento('Trabajo 2.docx')">Descargar</button>
+                        <input type="file" id="fileInputKaren2" style="display:none" onchange="subirDocumento(this.files, 'Trabajo 2.docx')">
+                    </div>
+                </div>
+
+                <div class="doc-card">
+                    <div class="doc-icon">📝</div>
+                    <h3>TRABAJO 03</h3>
+                    <h3>
+                    <a href="https://docs.google.com/document/d/1Ed4fF648YY4YBnlUBas1Xx4ec2rWRxNr/edit" target="_blank" rel="noopener noreferrer">
+                    Ver.docx
+                </a> </h3>
+                    <p>Espacio para la tercera evidencia de Karen.</p>
+                    <p><small>Quinto semestre</small></p>
+                    <div class="doc-actions">
+                        <button class="btn btn-success" onclick="document.getElementById('fileInputKaren3').click()">Subir</button>
+                        <button class="btn btn-soft" onclick="descargarDocumento('Trabajo 3.docx')">Descargar</button>
+                        <input type="file" id="fileInputKaren3" style="display:none" onchange="subirDocumento(this.files, 'Trabajo 3.docx')">
+                    </div>
+                </div>
             </div>
 
-            <div class="info-card">
-                <h3> Habilidades</h3>
-                <ul style="list-style: none; padding-left: 0;">
-                    <li>✔️ Investigación académica</li>
-                    <li>✔️ Análisis crítico</li>
-                    <li>✔️ Trabajo en equipo</li>
-                    <li>✔️ Comunicación efectiva</li>
-                    <li>✔️ Gestión de proyectos</li>
-                    <li>✔️ Uso de herramientas digitales</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección Documentos -->
-<section id="documentos" class="documents">
-    <h2 style="text-align: center; margin-bottom: 3rem; color: var(--primary-color); font-size: 2.5rem;">
-        Mis Documentos Académicos
-    </h2>
-    
+            <!-- // DOCUMENTOS ORIGINALES PRESERVADOS / OCULTOS // -->
+            <!--
+                El bloque original se conserva dentro de una plantilla no renderizada.
+                Así se pueden reutilizar sus enlaces, nombres de archivo e inputs.
+            -->
+            <template id="documentos-originales">
     <div class="doc-grid">
         <!-- Documento 1 -->
         <div class="doc-card">
@@ -647,28 +862,61 @@
         </div>
     </div>
 </section>
+            </template>
+        </div>
+    </section>
+
+    <section id="contacto" class="section">
+        <div class="container">
+            <div class="section-head">
+                <div class="section-kicker">Contacto</div>
+                <h2>Mi Contacto</h2>
+            </div>
+
+            <div class="contact-grid">
+                <article class="contact-card">
+                    <h3>Numero y Correo</h3>
+                    <div class="contact-list">
+                        <a href="mailto:">✉️ kgarcia35@itfip.edu.co</a>
+                        <a href="tel:">📱301740469</a>
+                    </div>
+                </article>
+
+                <article class="mini-quote">
+                    <div>
+                        <div class="bird-symbol">🕊️</div>
+                        <p>“Cada proyecto es una oportunidad para aprender, diseñar y construir algo mejor.”</p>
+                        <small>— Karen Tatiana García Rojas</small>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+</main>
 
 <script>
-  // Función para descargar archivo (redirige a la ruta del archivo para descargar)
-  function descargarDocumento(nombreArchivo) {
-    const ruta = `Documentos/${encodeURIComponent(nombreArchivo)}`;
-    const link = document.createElement('a');
-    link.href = ruta;
-    link.download = nombreArchivo;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
+    // Función para descargar archivo (se conserva para mantener la funcionalidad)
+    function descargarDocumento(nombreArchivo) {
+        const ruta = `Documentos/${encodeURIComponent(nombreArchivo)}`;
+        const link = document.createElement('a');
+        link.href = ruta;
+        link.download = nombreArchivo;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
 
-  // Función subir documento (deja como está, la puedes implementar luego)
-  function subirDocumento(files, nombreArchivo) {
-    alert(`Función subir para ${nombreArchivo} no implementada aún.`);
-  }
+    // Función subir documento (se conserva para mantener la funcionalidad actual)
+    function subirDocumento(files, nombreArchivo) {
+        alert(`Función subir para ${nombreArchivo} no implementada aún.`);
+    }
 </script>
 
-    <!-- Footer -->
-    <footer id="contacto">
-        <h3>Contacto</h3>
-        <p>Email: scardenas14@itfip.edu.co</p>
-        <p>Teléfono: 3112171542</p>
-        <p>© 2025 Mi Portafoli 
+<footer>
+    <div class="container">
+        © 2026 · Portafolio académico de <strong>Karen Tatiana García Rojas</strong> · Ingeniería Civil
+    </div>
+</footer>
+
+</body>
+</html>
